@@ -1,7 +1,7 @@
 {
   "name": "logs",
   "version": "0.1.0",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "test": "npx jest",
     "release": "np"
@@ -12,9 +12,13 @@
     "debug",
     "dicord"
   ],
-  "author": "",
+  "author": {
+    "name": "Rio Dwi Prabowo",
+    "email": "riyo.s94@gamil.com",
+    "url": "https://github.com/riod94"
+  },
   "license": "ISC",
-  "description": "",
+  "description": "A logging library for TypeScript to write logs on local files and sending messages to Discord.",
   "dependencies": {
     "@types/jest": "^29.5.12",
     "@types/node": "^22.0.0",
