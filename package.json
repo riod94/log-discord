@@ -1,0 +1,29 @@
+{
+  "name": "logs",
+  "version": "0.1.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx jest",
+    "release": "np"
+  },
+  "keywords": [
+    "log",
+    "logger",
+    "debug",
+    "dicord"
+  ],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "^22.0.0",
+    "dotenv": "^16.4.5",
+    "fs": "^0.0.1-security",
+    "jest": "^29.7.0",
+    "np": "^10.0.7",
+    "path": "^0.12.7",
+    "ts-jest": "^29.2.3",
+    "typescript": "^5.5.4"
+  }
+}
