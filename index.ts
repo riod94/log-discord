@@ -122,8 +122,8 @@ export default class Log {
         let logMessage = `${this.timestamp}: ${LogLevel.ERROR}: ${context ?? ''}`;
         let newContext = context;
         if (context instanceof Error) {
-            newContext = logMessage;
             logMessage = `${this.timestamp}: ${LogLevel.ERROR}: ${context.message}\n${context.stack ?? ''}`;
+            newContext = logMessage;
             this.writeLogFile(logMessage);
         }
 
