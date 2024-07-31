@@ -17,6 +17,9 @@
     "email": "riyo.s94@gamil.com",
     "url": "https://github.com/riod94"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/@riod94/logs"
+  },
   "license": "ISC",
   "description": "A logging library for TypeScript to write logs on local files and sending messages to Discord.",
   "dependencies": {
