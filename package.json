@@ -1,17 +1,27 @@
 {
   "name": "log-discord",
   "version": "1.0.1",
-  "main": "index.ts",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
   "scripts": {
+    "build": "npx tsc --build",
     "test": "npx jest",
     "release": "np"
   },
   "keywords": [
     "log",
+    "logs",
     "logger",
+    "logging",
     "debug",
-    "dicord"
+    "error",
+    "discord"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/riod94/log-discord.git"
+  },
   "author": {
     "name": "Rio Dwi Prabowo",
     "email": "riyo.s94@gamil.com",

@@ -27,7 +27,7 @@ export default class Log {
     private static async writeLogFile(logMessage: string) {
         // Create log folder if it doesn't exist
         if (!fs.existsSync(this.logFolderPath)) {
-            fs.mkdirSync(this.logFolderPath, { recursive: true }); // tambahkan opsi { recursive: true } untuk membuat folder rekursif
+            fs.mkdirSync(this.logFolderPath, { recursive: true });
         }
 
         // Create log file
@@ -37,10 +37,10 @@ export default class Log {
         // Create log file if it doesn't exist
         if (!fs.existsSync(logFilePath)) {
             fs.writeFileSync(logFilePath, logMessage + '\n');
+        } else {
+            // Append log message to log file
+            fs.appendFileSync(logFilePath, logMessage + '\n');
         }
-
-        // Append log message to log file
-        fs.appendFileSync(logFilePath, logMessage + '\n');
 
         // Remove old log files if needed
         const logFiles = fs.readdirSync(this.logFolderPath);
