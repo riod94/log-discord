@@ -177,8 +177,8 @@ export default class Log {
         if (context instanceof Error) {
             logMessage = `[${this.timestamp}] ${LogLevel.ERROR}: ${context.message}\n${context.stack ?? ''}`;
             newContext = logMessage;
-            this.writeLogFile(logMessage);
         }
+        this.writeLogFile(logMessage);
 
         if (this.webhookUrl) {
             this.sendDiscordMessage(LogLevel.ERROR, message, newContext);
@@ -191,8 +191,8 @@ export default class Log {
         if (context instanceof Error) {
             logMessage = `[${this.timestamp}] ${LogLevel.EMERGENCY}: ${context.message}\n${context.stack ?? ''}`;
             newContext = logMessage;
-            this.writeLogFile(logMessage);
         }
+        this.writeLogFile(logMessage);
 
         if (this.webhookUrl) {
             this.sendDiscordMessage(LogLevel.EMERGENCY, message, newContext);
@@ -205,8 +205,8 @@ export default class Log {
         if (context instanceof Error) {
             logMessage = `[${this.timestamp}] ${LogLevel.CRITICAL}: ${context.message}\n${context.stack ?? ''}`;
             newContext = logMessage;
-            this.writeLogFile(logMessage);
         }
+        this.writeLogFile(logMessage);
 
         if (this.webhookUrl) {
             this.sendDiscordMessage(LogLevel.CRITICAL, message, newContext);
@@ -219,8 +219,8 @@ export default class Log {
         if (context instanceof Error) {
             logMessage = `[${this.timestamp}] ${LogLevel.DEBUG}: ${context.message}\n${context.stack ?? ''}`;
             newContext = logMessage;
-            this.writeLogFile(logMessage);
         }
+        this.writeLogFile(logMessage);
 
         if (this.webhookUrl) {
             this.sendDiscordMessage(LogLevel.DEBUG, message, newContext);
