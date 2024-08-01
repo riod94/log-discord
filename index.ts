@@ -16,7 +16,7 @@ enum LogLevel {
 export default class Log {
     private static timestamp: string = new Date().toISOString();
     private static webhookUrl: string | undefined = process.env.DISCORD_WEBHOOK_URL;
-    private static logFolderPath: string = path.join(__dirname, process.env.LOG_FOLDER_PATH || 'logs');
+    private static logFolderPath: string = process.env.LOG_FOLDER_PATH || './logs';
     private static daysToKeep: number = parseInt(process.env.LOG_DAYS_TO_KEEP || '7');
     public static embeds = {
         footer: {
@@ -44,7 +44,7 @@ export default class Log {
 
         // Remove old log files if needed
         const logFiles = fs.readdirSync(this.logFolderPath);
-        if (logFiles.length > this.daysToKeep) {
+        if (this.daysToKeep > 0 && logFiles.length > this.daysToKeep) {
             const oldestLogFileName = logFiles[0];
             fs.unlinkSync(path.join(this.logFolderPath, oldestLogFileName));
         }
@@ -163,7 +163,7 @@ export default class Log {
             // Check the response status
             if (!response.ok) {
                 console.error('Failed to send Discord message:', response.statusText);
-                this.writeLogFile(`Failed to send Discord message: ${response.statusText}`);
+                this.writeLogFile(`[${new Date().toISOString()}]: Failed to send Discord message: ${response.statusText}`);
             }
         } catch (error) {
             console.error('Failed to send Discord message:', error);
@@ -172,10 +172,10 @@ export default class Log {
     }
 
     static error(message: string, context?: any) {
-        let logMessage = `${this.timestamp}: ${LogLevel.ERROR}: ${context ?? ''}`;
+        let logMessage = `[${this.timestamp}] ${LogLevel.ERROR}: ${context ?? ''}`;
         let newContext = context;
         if (context instanceof Error) {
-            logMessage = `${this.timestamp}: ${LogLevel.ERROR}: ${context.message}\n${context.stack ?? ''}`;
+            logMessage = `[${this.timestamp}] ${LogLevel.ERROR}: ${context.message}\n${context.stack ?? ''}`;
             newContext = logMessage;
             this.writeLogFile(logMessage);
         }
@@ -186,10 +186,10 @@ export default class Log {
     }
 
     static emergency(message: string, context?: any) {
-        let logMessage = `${this.timestamp}: ${LogLevel.EMERGENCY}: ${context ?? ''}`;
+        let logMessage = `[${this.timestamp}] ${LogLevel.EMERGENCY}: ${context ?? ''}`;
         let newContext = context;
         if (context instanceof Error) {
-            logMessage = `${this.timestamp}: ${LogLevel.EMERGENCY}: ${context.message}\n${context.stack ?? ''}`;
+            logMessage = `[${this.timestamp}] ${LogLevel.EMERGENCY}: ${context.message}\n${context.stack ?? ''}`;
             newContext = logMessage;
             this.writeLogFile(logMessage);
         }
@@ -200,10 +200,10 @@ export default class Log {
     }
 
     static critical(message: string, context?: any) {
-        let logMessage = `${this.timestamp}: ${LogLevel.CRITICAL}: ${context ?? ''}`;
+        let logMessage = `[${this.timestamp}] ${LogLevel.CRITICAL}: ${context ?? ''}`;
         let newContext = context;
         if (context instanceof Error) {
-            logMessage = `${this.timestamp}: ${LogLevel.CRITICAL}: ${context.message}\n${context.stack ?? ''}`;
+            logMessage = `[${this.timestamp}] ${LogLevel.CRITICAL}: ${context.message}\n${context.stack ?? ''}`;
             newContext = logMessage;
             this.writeLogFile(logMessage);
         }
@@ -214,10 +214,10 @@ export default class Log {
     }
 
     static debug(message: string, context?: any) {
-        let logMessage = `${this.timestamp}: ${LogLevel.DEBUG}: ${context ?? ''}`;
+        let logMessage = `[${this.timestamp}] ${LogLevel.DEBUG}: ${context ?? ''}`;
         let newContext = context;
         if (context instanceof Error) {
-            logMessage = `${this.timestamp}: ${LogLevel.DEBUG}: ${context.message}\n${context.stack ?? ''}`;
+            logMessage = `[${this.timestamp}] ${LogLevel.DEBUG}: ${context.message}\n${context.stack ?? ''}`;
             newContext = logMessage;
             this.writeLogFile(logMessage);
         }
@@ -228,10 +228,10 @@ export default class Log {
     }
 
     static info(message: string, context?: any) {
-        let logMessage = `${this.timestamp}: ${LogLevel.INFO}: ${context ?? ''}`;
+        let logMessage = `[${this.timestamp}] ${LogLevel.INFO}: ${context ?? ''}`;
         let newContext = context;
         if (context instanceof Error) {
-            logMessage = `${this.timestamp}: ${LogLevel.INFO}: ${context.message}\n${context.stack ?? ''}`;
+            logMessage = `[${this.timestamp}] ${LogLevel.INFO}: ${context.message}\n${context.stack ?? ''}`;
             newContext = logMessage;
             this.writeLogFile(logMessage);
         }
@@ -242,10 +242,10 @@ export default class Log {
     }
 
     static warning(message: string, context?: any) {
-        let logMessage = `${this.timestamp}: ${LogLevel.WARNING}: ${context ?? ''}`;
+        let logMessage = `[${this.timestamp}] ${LogLevel.WARNING}: ${context ?? ''}`;
         let newContext = context;
         if (context instanceof Error) {
-            logMessage = `${this.timestamp}: ${LogLevel.WARNING}: ${context.message}\n${context.stack ?? ''}`;
+            logMessage = `[${this.timestamp}] ${LogLevel.WARNING}: ${context.message}\n${context.stack ?? ''}`;
             newContext = logMessage;
             this.writeLogFile(logMessage);
         }

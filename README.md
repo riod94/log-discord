@@ -66,8 +66,8 @@ You can configure the Log library by setting the following properties:
 set from the environment
 
 ```env
-LOG_FOLDER_PATH=logs 	// default: ./logs
-LOG_DAYS_TO_KEEP=7 		// default: 7
+LOG_FOLDER_PATH=./logs 	// default: ./logs
+LOG_DAYS_TO_KEEP=7 		// default: 7 (keep logs for 7 days) set to 0 to keep logs forever
 DISCORD_WEBHOOK_URL= 	// default: null
 DISCORD_FOOTER_TEXT=	// default: 'Sent by Log'
 ```
