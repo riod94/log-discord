@@ -7,15 +7,15 @@ Logs is a TypeScript library that makes it easy to write logs on local files and
 You can install the Log library using npm or yarn:
 
 ```bash
-npm install @riod94/logs
+npm install log-discord
 
 or
 
-yarn add @riod94/logs
+yarn add log-discord
 
 or
 
-bun add @riod94/logs
+bun add log-discord
 ```
 
 ## Usage
@@ -23,10 +23,11 @@ bun add @riod94/logs
 Here's an example of how to use the Log library:
 
 ```typescript
-import { Log, LogLevel } from "@riod94/logs";
+import Log from "log-discord";
 
 // Set the webhook URL
-Log.webhookUrl = "https://discord.com/api/webhooks/1234567890/abcdefghijklmnopqrstuvwxyz";
+Log.webhookUrl =
+	"https://discord.com/api/webhooks/1234567890/abcdefghijklmnopqrstuvwxyz";
 
 // Write a log message
 Log.info("This is an info log message");
@@ -65,12 +66,11 @@ You can configure the Log library by setting the following properties:
 set from the environment
 
 ```env
-DISCORD_WEBHOOK_URL=
+LOG_FOLDER_PATH=logs 	// default: ./logs
+LOG_DAYS_TO_KEEP=7 		// default: 7
+DISCORD_WEBHOOK_URL= 	// default: null
+DISCORD_FOOTER_TEXT=	// default: 'Sent by Log'
 ```
-
-or by setting the following properties:
-
--  `Log.webhookUrl`: The webhook URL to send logs to. Set this to `undefined` to disable sending logs to Discord.
 
 ## What does it look like?
 
