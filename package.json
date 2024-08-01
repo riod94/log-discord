@@ -1,9 +1,7 @@
 {
   "name": "log-discord",
   "version": "1.0.1",
-  "type": "module",
   "main": "dist/index.js",
-  "module": "dist/index.js",
   "scripts": {
     "build": "npx tsc --build",
     "test": "npx jest",
