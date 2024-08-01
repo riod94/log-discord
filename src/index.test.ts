@@ -8,35 +8,41 @@ describe('Log tests', () => {
 
     test('test debug message', () => {
         const logMessage = 'Test debug message';
-        Log.debug(logMessage, {
+        const logs = Log.debug(logMessage, {
             test: 'test',
             test2: 2
         });
+        expect(logs).toBe(undefined);
     });
 
     test('test error message', () => {
         const logMessage = 'Test Error message';
-        Log.error('error message', Error(logMessage));
+        const logs = Log.error('error message', Error(logMessage));
+        expect(logs).toBe(undefined);
     });
 
     test('test critical message', () => {
         const logMessage = 'Test Critical message';
-        Log.critical(logMessage, Error(logMessage));
+        const logs = Log.critical(logMessage, Error(logMessage));
+        expect(logs).toBe(undefined);
     })
 
     test('test info message', () => {
         const logMessage = 'Test Info message';
-        Log.info(logMessage);
+        const logs = Log.info(logMessage);
+        expect(logs).toBe(undefined);
     });
 
     test('test warning message', () => {
         const logMessage = 'Test Warning message';
-        Log.warning(logMessage);
+        const logs = Log.warning(logMessage);
+        expect(logs).toBe(undefined);
     });
 
     test('test emergency message', () => {
         const logMessage = 'Test Emergency message';
-        Log.emergency(logMessage);
+        const logs = Log.emergency(logMessage);
+        expect(logs).toBe(undefined);
     });
 
     test('test to many characters', () => {
@@ -7573,6 +7579,7 @@ describe('Log tests', () => {
                 "email": "karsa.safitri5644@demo.nusawork.com"
             }
         ]
-        Log.error(logMessage, context);
+        const logs = Log.error(logMessage, context);
+        expect(logs).toBe(undefined);
     });
 });

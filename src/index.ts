@@ -162,8 +162,8 @@ export default class Log {
 
             // Check the response status
             if (!response.ok) {
-                console.error('Failed to send Discord message:', response.statusText);
-                this.writeLogFile(`[${new Date().toISOString()}]: Failed to send Discord message: ${response.statusText}`);
+                console.error('Failed to send Discord message:', response.body);
+                this.writeLogFile(`[${new Date().toISOString()}]: Failed to send Discord message: ${response.body}`);
             }
         } catch (error) {
             console.error('Failed to send Discord message:', error);
