@@ -1,5 +1,5 @@
-import Log from "./index";
 import { jest } from "@jest/globals";
+import Log from "../dist/index.js";
 
 describe('Log tests', () => {
     afterEach(() => {

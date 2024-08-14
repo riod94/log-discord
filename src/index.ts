@@ -165,9 +165,13 @@ export default class Log {
                 console.error('Failed to send Discord message:', response.body);
                 this.writeLogFile(`[${new Date().toISOString()}]: Failed to send Discord message: ${response.body}`);
             }
+
+            return true;
         } catch (error) {
             console.error('Failed to send Discord message:', error);
             this.writeLogFile(`Failed to send Discord message: ${error}`);
+
+            return error;
         }
     }
 
