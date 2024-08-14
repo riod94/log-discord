@@ -1,6 +1,6 @@
 {
   "name": "log-discord",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "A logging library for TypeScript to write logs on local files and sending messages to Discord.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
